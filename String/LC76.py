@@ -19,7 +19,7 @@ class Solution:
                 window[c] += 1
                 if window[c] == need[c]:
                     valid += 1
-            
+            ### !!!! 
             while valid == len(need):
                 if right - left < length:
                     start = left

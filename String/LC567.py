@@ -18,7 +18,7 @@ class Solution:
                 window[c] += 1
                 if window[c] == need[c]:
                     valid+=1
-            
+            ### !!!!
             while right - left >= len(s1):
                 if valid == len(need):
                     return True
