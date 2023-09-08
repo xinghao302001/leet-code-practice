@@ -23,8 +23,7 @@ def ShellSort(arr: List[int]):
                     j-= gap
                 else:
                     break
-
-        gap = math.floor(gap/3)
+        gap = math.floor(gap / 3)
     return arr
 
 
