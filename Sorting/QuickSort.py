@@ -1,7 +1,6 @@
 from typing import List
 
 
-
 def partiton(arr, start, end):
     pivot = arr[start]
 
