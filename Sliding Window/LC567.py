@@ -1,15 +1,16 @@
 from collections import defaultdict
 
+
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         need, window = defaultdict(int), defaultdict(int)
 
         for c in s1:
             need[c] += 1
-        
-        left, right = 0,0
+
+        left, right = 0, 0
         valid = 0
-         
+
         while right < len(s2):
             c = s2[right]
             right += 1
@@ -17,7 +18,7 @@ class Solution:
             if c in need:
                 window[c] += 1
                 if window[c] == need[c]:
-                    valid+=1
+                    valid += 1
             ### !!!!
             while right - left >= len(s1):
                 if valid == len(need):
@@ -31,8 +32,9 @@ class Solution:
                         valid -= 1
                     window[d] -= 1
         return False
-    
-if __name__=="__main__":
+
+
+if __name__ == "__main__":
     sol = Solution()
     ts_str_a = "DADOBECODEBANC"
     ts_str_b = "AB"
