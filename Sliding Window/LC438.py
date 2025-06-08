@@ -4,7 +4,7 @@ from collections import Counter
 
 class Solution:
     ## t <=> p
-    def findAnagrams(s: str, p: str):
+    def findAnagrams(self, s: str, p: str):
         res = []
         p_count = Counter(p)
         window_count = Counter()
