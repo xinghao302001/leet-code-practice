@@ -1,29 +1,18 @@
 # Validate Binary Search Tree
 
 from NodeDefinition import TreeNode
-from typing import Optional, List
+from typing import Optional
 
 
 class Solution:
+    pre = float("-inf")
+
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
-        pre = None
-        
-        def __isValidBST(root: TreeNode) -> bool:
-            nonlocal pre
-            
-            if not root:
-                return True
-            
-            is_left_valid = __isValidBST(root.left)
-
-            if pre and pre.val >= root.val: 
-                return False
-            ## !!
-            pre = root
-
-            is_right_valid = __isValidBST(root.right)
-        
-            return is_left_valid  and is_right_valid
-        
-        return __isValidBST(root)
-            
+        if root is None:
+            return True
+        if not self.isValidBST(root.left):
+            return False
+        if root.val <= self.pre:
+            return False
+        self.pre = root.val
+        return self.isValidBST(root.right)

@@ -8,21 +8,13 @@ from typing import Optional, List
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
-            if not preorder:
-                  return
-            
-            root_val =  preorder[0]
-            root = TreeNode(root_val)
+        if not preorder or not inorder:
+            return None
+        root_val = preorder[0]
+        root = TreeNode(root_val)
 
-            root_index =inorder.index(root_val)
+        mid = inorder.index(root_val)
 
-            inorder_left = inorder[:root_index]
-            inoder_right = inorder[root_index+1:]
-
-            preorder_left = preorder[1:len(inorder_left)+1]
-            preorder_right = preorder[1+len(inorder_left):]
-
-            root.left = self.buildTree(preorder_left, inorder_left)
-            root.right = self.buildTree(preorder_right, inoder_right)
-
-            return root
+        root.left = self.buildTree(preorder[1 : mid + 1], inorder[:mid])
+        root.right = self.buildTree(preorder[mid + 1 :], inorder[mid + 1 :])
+        return root

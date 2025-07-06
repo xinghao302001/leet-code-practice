@@ -16,10 +16,8 @@ class Solution:
         # 第 1 步：插入新节点
         curr = head
         while curr:
-            copy = Node(curr.val)
-            copy.next = curr.next
-            curr.next = copy
-            curr = copy.next
+            curr.next = Node(curr.val, curr.next)
+            curr = curr.next.next
 
         # 第 2 步：处理 random 指针
         curr = head
@@ -28,14 +26,9 @@ class Solution:
                 curr.next.random = curr.random.next
             curr = curr.next.next
 
-        # 第 3 步：拆分链表
-        curr = head
-        new_head = head.next
-        while curr:
-            copy = curr.next
-            curr.next = copy.next
-            if copy.next:
-                copy.next = copy.next.next
+        # 第 3 步：遍历交错链表中的新链表节点
+        curr = head.next
+        while curr.next:
+            curr.next = curr.next.next
             curr = curr.next
-
-        return new_head
+        return head.next

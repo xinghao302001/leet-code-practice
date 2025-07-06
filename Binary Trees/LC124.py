@@ -18,9 +18,11 @@ class Solution:
             left_gain = max(dfs(node.left), 0)
             right_gain = max(dfs(node.right), 0)
 
-            cur_max = node.val + left_gain + right_gain
-            self.max_sum = max(self.max_sum, cur_max)
-            return node.val + max(left_gain, right_gain)
+            cur_max_path = node.val + left_gain + right_gain  # left -> cur -> right
+            self.max_sum = max(self.max_sum, cur_max_path)
+            return node.val + max(
+                left_gain, right_gain
+            )  # tell parent nodes which side can get more gain.
 
         dfs(root)
         return self.max_sum
