@@ -31,7 +31,7 @@ class Solution2:
 
         for i in range(len(nums) - 1):
             farthest = max(farthest, i + nums[i])
-            if i == end:
+            if i == end:  # 表示当前已经走到了这次跳跃所能覆盖的最远位置了
                 jumps += 1
                 end = farthest
                 if end >= len(nums) - 1:
