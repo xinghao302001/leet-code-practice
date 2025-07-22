@@ -23,7 +23,7 @@ class Solution:
                 or backtrack(r, c - 1, idx + 1)
             )
 
-            board[r][c] = tmp  # backtrack/rollback
+            board[r][c] = tmp  # backtrack/rollback 在循环内恢复现场 而不是循环外
             return found
 
         for i in range(rows):

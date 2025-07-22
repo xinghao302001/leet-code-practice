@@ -18,8 +18,8 @@ class Solution:
                 if used[i]:
                     continue
                 path.append(nums[i])
-                ## !!!
                 used[i] = True
+                ## !!!
                 backtrack(path)
                 path.pop()  ## !!
                 used[i] = False
